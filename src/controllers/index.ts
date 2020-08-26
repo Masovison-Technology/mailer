@@ -12,7 +12,9 @@ export const sendOTPMail = async (req: Request, res: Response) => {
 
 export const sendTestMail = async (req: Request, res: Response) => {
     try {
-        const result = MailServices.sendTestMail(req.body);
+        const email = req.params.email;
+        const type = req.params.type;
+        const result = MailServices.sendTestMail(type, email);
         return res.status(200).json({ result });
     } catch (error) {
         return res.status(400).json({ error });

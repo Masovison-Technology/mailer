@@ -14,13 +14,13 @@ const MailServices = {
         return await transporter.sendMail(mailOptions);
     },
 
-    sendTestMail: async (body: any) => {
+    sendTestMail: async (type: string, email: string | null) => {
         const mailOptions = {
             from: process.env.MAIL__FROM,
-            to: 'blazinasis@gmail.com',
+            to: email ?? 'blazinasis@gmail.com',
             subject: 'Test Mail',
             text: 'Test',
-            html: body.type === 'verification'
+            html: type === 'verification'
                 ? VerificationTemplate({ name: 'Ashish Kafle', code: '123456' })
                 : ''
         };

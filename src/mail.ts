@@ -16,7 +16,7 @@ if (process.env.NODE_ENV !== 'production') app.use(logger('dev'))
 app.post('/mailer/otp', validateOTPMail, sendOTPMail);
 // app.post('/mailer/welcomeUser', validateWelcomeUserMail, sendWelcomeUserMail);
 // app.post('/mailer/welcomeCustomer', validateWelcomeCustomerMail, sendWelcomeUserMail);
-app.post('/test', sendTestMail);
+app.get('/test/:type/:email', sendTestMail);
 
 
 app.use('/', (_, res) => res.status(200).json({ status: 'Online!' }));
