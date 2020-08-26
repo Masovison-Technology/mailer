@@ -29,12 +29,12 @@ const MailServices = {
     }
 }
 
-const getMailOptions = (params: any, template: TTemplate, templateArgs: any) => {
+const getMailOptions = (body: any, template: TTemplate, templateArgs: any) => {
     return {
         from: process.env.MAIL__FROM ?? 'Kaha <kaha@masovision.com>',
-        to: params.to,
-        subject: params.subject,
-        text: params.text,
+        to: body.to,
+        subject: body.subject,
+        text: body.text,
         html: template(templateArgs),
     }
 };

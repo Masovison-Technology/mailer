@@ -5,7 +5,7 @@ export function validateOTPMail(req: Request, res: Response, next: NextFunction)
     if (
         req.body.from !== null && req.body.subject !== null &&
         req.body.text !== null && req.body.to !== null &&
-        req.body.otp !== null
+        req.body.code !== null && req.body.name !== null
     ) {
         next();
     }
