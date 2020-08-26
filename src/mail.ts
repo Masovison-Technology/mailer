@@ -19,7 +19,7 @@ app.post('/mailer/otp', validateOTPMail, sendOTPMail);
 app.get('/mailer/test/:type/:email', sendTestMail);
 
 
-app.get('mailer/', (_, res) => res.status(200).json({ status: 'Online!' }));
+app.get('/mailer', (_, res) => res.status(200).json({ status: 'Online!' }));
 app.use((_, __, next) => {
     next(createError(404));
 });
