@@ -16,10 +16,10 @@ if (process.env.NODE_ENV !== 'production') app.use(logger('dev'))
 app.post('/mailer/otp', validateOTPMail, sendOTPMail);
 // app.post('/mailer/welcomeUser', validateWelcomeUserMail, sendWelcomeUserMail);
 // app.post('/mailer/welcomeCustomer', validateWelcomeCustomerMail, sendWelcomeUserMail);
-app.get('/test/:type/:email', sendTestMail);
+app.get('/mailer/test/:type/:email', sendTestMail);
 
 
-app.use('/', (_, res) => res.status(200).json({ status: 'Online!' }));
+app.get('mailer/', (_, res) => res.status(200).json({ status: 'Online!' }));
 app.use((_, __, next) => {
     next(createError(404));
 });
