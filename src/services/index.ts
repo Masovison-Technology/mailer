@@ -19,7 +19,7 @@ const MailServices = {
             from: process.env.MAIL__FROM,
             to: email ?? 'blazinasis@gmail.com',
             subject: 'Test Mail',
-            text: 'Test',
+            // text: 'Test',
             html: type === 'verification'
                 ? VerificationTemplate({ name: 'Ashish Kafle', code: '123456' })
                 : ''
@@ -33,8 +33,8 @@ const getMailOptions = (body: any, template: TTemplate, templateArgs: any) => {
     return {
         from: process.env.MAIL__FROM ?? 'Kaha <kaha@masovision.com>',
         to: body.to,
-        subject: body.subject,
-        text: body.text,
+        subject: 'OTP verification',
+        // text: body.text,
         html: template(templateArgs),
     }
 };
