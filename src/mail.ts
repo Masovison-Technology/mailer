@@ -20,8 +20,7 @@ app.get('/test/:type/:email', validateTestMail, sendTestMail);
 
 
 app.get('/', (_, res) => res.status(200).json({ status: 'Online!' }));
-app.use((_, __, next) => {
-    next(createError(404));
-});
+
+app.use((_, res) => res.status(400).json({ error: 'Not found!' }));
 
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}!`));
