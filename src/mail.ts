@@ -4,7 +4,7 @@ import logger from 'morgan';
 import helmet from 'helmet';
 
 import { sendOTPMail, sendTestMail } from './controllers';
-import { validateOTPMail } from './middlewares';
+import { validateOTPMail, validateTestMail } from './middlewares';
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -16,7 +16,7 @@ if (process.env.NODE_ENV !== 'production') app.use(logger('dev'))
 app.post('/otp', validateOTPMail, sendOTPMail);
 // app.post('/mailer/welcomeUser', validateWelcomeUserMail, sendWelcomeUserMail);
 // app.post('/mailer/welcomeCustomer', validateWelcomeCustomerMail, sendWelcomeUserMail);
-app.get('/test/:type/:email', sendTestMail);
+app.get('/test/:type/:email', validateTestMail, sendTestMail);
 
 
 app.get('/', (_, res) => res.status(200).json({ status: 'Online!' }));

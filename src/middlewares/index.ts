@@ -11,3 +11,10 @@ export function validateOTPMail(req: Request, res: Response, next: NextFunction)
     }
     return res.status(400).json(ValidationError);
 }
+
+export function validateTestMail(req: Request, res: Response, next: NextFunction) {
+    if (req.params.type === null || req.params.email === null) {
+        return res.status(400).json({ error: "Invalid params" });
+    }
+    next();
+}
