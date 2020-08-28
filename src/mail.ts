@@ -11,7 +11,8 @@ const app = express();
 
 app.use(helmet());
 app.use(express.json());
-if (process.env.NODE_ENV !== 'production') app.use(logger('dev'))
+if (process.env.NODE_ENV !== 'production') app.use(logger('dev'));
+else app.use(logger('tiny'));
 
 app.post('/otp', validateOTPMail, sendOTPMail);
 // app.post('/mailer/welcomeUser', validateWelcomeUserMail, sendWelcomeUserMail);
